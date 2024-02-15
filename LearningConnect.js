@@ -24,6 +24,7 @@ function createEvent2Hours() {
 function sendGmailAfterCourse() {
   const startTime = new Date(YEAR, MONTH - 1, DAY, HOUR, MINUTE, 0);
   const cource = ["Snnipet Tool","iPhone","アプリ"];
+  const subject = startTime.getFullYear() + "/" + (startTime.getMonth() + 1) + "/" + startTime.getDate() + " " +TITLE;
   const body = `
   ${GUEST_NAME}さん
 
@@ -31,17 +32,20 @@ function sendGmailAfterCourse() {
   本日はご対応いただきありがとうございました。
 
   本日は以下を実行しました。
-  - ${course[0]}
-  - ${course[1]}
-  - ${course[2]}
+`
 
-  ${SHEET_URL}
-  
-  以上です。
+  const addCource = body + cource.reduce((acc,cur) => "- " + cur + "\n" + acc, "");
 
-  ${ME}
-  `
-  const main = MailApp.sendEmail(GUEST_GMAIL, TITLE + startTime.getDate, body);
+  const addSheetAndSigneture = addCource + `
+
+${SHEET_URL}
+
+以上です。
+
+${ME}
+`
+
+  const main = MailApp.sendEmail(GUEST_GMAIL, subject, body);
 
 }
 
