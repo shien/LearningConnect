@@ -6,7 +6,6 @@ const DAY = 16
 const HOUR = 13
 const MINUTE = 0
 const PAID_TIME = 8
-const SHEET_ID = "SHEET ID";
 const SHEET_URL = "SHEET URL"
 
 function createEvent2Hours() {
@@ -49,7 +48,7 @@ function sendGmailAfterCourse() {
 function addCourceConetentsToSS() {
   const startTime = new Date(YEAR, MONTH - 1, DAY, HOUR, MINUTE, 0);
   const cource = ["Snnipet Tool","iPhone","ディープラーニング"];
-  const ss = SpreadsheetApp.openById(SHEET_ID);
+  const ss = SpreadsheetApp.openByUrl(SHEET_URL);
   const sheet = ss.getSheetByName("History");
 
   let i = 2;
