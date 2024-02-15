@@ -55,7 +55,7 @@ function addCourceConetentsToSS() {
   const ss = SpreadsheetApp.openByUrl(SHEET_URL);
   const sheet = ss.getSheetByName("History");
 
-  let i = 2;
+  let i = sheet.getDataRange().getLastRow() + 1;
   for (courceItem of cource) {
     console.log(courceItem)
     sheet.getRange("A" + i).setValue(startTime);
